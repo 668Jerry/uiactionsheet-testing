@@ -15,6 +15,7 @@
 		8FC6C29F1B1D1F4800BB6495 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8FC6C29E1B1D1F4800BB6495 /* Images.xcassets */; };
 		8FC6C2A21B1D1F4800BB6495 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8FC6C2A01B1D1F4800BB6495 /* LaunchScreen.xib */; };
 		8FC6C2AE1B1D1F4800BB6495 /* uiaction_sheet_testTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FC6C2AD1B1D1F4800BB6495 /* uiaction_sheet_testTests.m */; };
+		8FC6C2B91B1D20D400BB6495 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FC6C2B81B1D20D400BB6495 /* MainViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +43,8 @@
 		8FC6C2A71B1D1F4800BB6495 /* uiaction sheet testTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "uiaction sheet testTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8FC6C2AC1B1D1F4800BB6495 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8FC6C2AD1B1D1F4800BB6495 /* uiaction_sheet_testTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = uiaction_sheet_testTests.m; sourceTree = "<group>"; };
+		8FC6C2B71B1D20D400BB6495 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MainViewController.h; path = view/MainViewController.h; sourceTree = "<group>"; };
+		8FC6C2B81B1D20D400BB6495 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MainViewController.m; path = view/MainViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,6 +95,8 @@
 				8FC6C2A01B1D1F4800BB6495 /* LaunchScreen.xib */,
 				8FC6C2951B1D1F4800BB6495 /* uiaction_sheet_test.xcdatamodeld */,
 				8FC6C28E1B1D1F4800BB6495 /* Supporting Files */,
+				8FC6C2B71B1D20D400BB6495 /* MainViewController.h */,
+				8FC6C2B81B1D20D400BB6495 /* MainViewController.m */,
 			);
 			path = "uiaction sheet test";
 			sourceTree = "<group>";
@@ -225,6 +230,7 @@
 				8FC6C2941B1D1F4800BB6495 /* AppDelegate.m in Sources */,
 				8FC6C2911B1D1F4800BB6495 /* main.m in Sources */,
 				8FC6C29A1B1D1F4800BB6495 /* ViewController.m in Sources */,
+				8FC6C2B91B1D20D400BB6495 /* MainViewController.m in Sources */,
 				8FC6C2971B1D1F4800BB6495 /* uiaction_sheet_test.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
