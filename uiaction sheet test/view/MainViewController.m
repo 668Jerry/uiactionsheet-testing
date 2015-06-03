@@ -38,34 +38,25 @@
     cgfU = cgfScreenWidth / 320;
 }
 
-- (void)addActionSheet {
-    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:nil
-                                                             delegate:self
-                                                    cancelButtonTitle:@"Cancel"
-                                               destructiveButtonTitle:@"Delete Note"
-                                                    otherButtonTitles:nil];
-    [self.view addSubview:actionSheet];
-}
-
 - (void)buttonNormalActionSheetClicked:(id)sender {
     NSLog(@"- (void)buttonNormalActionSheetClicked:(id)sender {");
     
-    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"大標題"
-                                                             delegate:self
-                                                    cancelButtonTitle:@"填入取消，也可以是nil整列不顯示，但就無法關掉了"
-                                               destructiveButtonTitle:@"這是紅字的刪除，也可以是nil整列不顯示"
-                                                    otherButtonTitles:@"Copy", @"Move", @"Duplicate", nil];
+    UIActionSheet *uiasNormalActionSheet = [[UIActionSheet alloc] initWithTitle:@"大標題"
+                                                                       delegate:self
+                                                              cancelButtonTitle:@"填入取消，也可以是nil整列不顯示，但就無法關掉了"
+                                                         destructiveButtonTitle:@"這是紅字的刪除，也可以是nil整列不顯示"
+                                                              otherButtonTitles:@"Copy", @"Move", @"Duplicate", nil];
     
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
         // In this case the device is an iPad.
-        [actionSheet showFromRect:[(UIButton *)sender frame] inView:self.view animated:YES];
+        [uiasNormalActionSheet showFromRect:[(UIButton *)sender frame] inView:self.view animated:YES];
     }
     else{
         // In this case the device is an iPhone/iPod Touch.
-        [actionSheet showInView:self.view];
+        [uiasNormalActionSheet showInView:self.view];
     }
     
-    actionSheet.tag = 100;
+    uiasNormalActionSheet.tag = 100;
 }
 
 #pragma mark - UIActionSheet method implementation
@@ -118,7 +109,6 @@
     [self setMyScreenSize];
     // Do any additional setup after loading the view.
     [self addButton];
-    [self addActionSheet];
 }
 
 - (void)didReceiveMemoryWarning {
