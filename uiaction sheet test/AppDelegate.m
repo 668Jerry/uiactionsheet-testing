@@ -21,7 +21,8 @@
     self.window = [[UIWindow alloc]initWithFrame:[[UIScreen mainScreen]bounds]];
     [self.window setBackgroundColor:[UIColor greenColor]];
     MainViewController *mainViewController = [[MainViewController alloc]init];
-    [self.window addSubview:mainViewController.view];
+//    [self.window addSubview:mainViewController.view];
+    [self.window setRootViewController:mainViewController];
     [self.window makeKeyAndVisible];
     return YES;
 }
