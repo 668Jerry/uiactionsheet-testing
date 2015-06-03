@@ -38,25 +38,43 @@
     cgfU = cgfScreenWidth / 320;
 }
 
-- (void)buttonNormalActionSheetClicked:(id)sender {
-    NSLog(@"- (void)buttonNormalActionSheetClicked:(id)sender {");
+- (void)buttonGeneralUseActionSheetClicked:(id)sender {
+    NSLog(@"- (void)buttonGeneralUseActionSheetClicked:(id)sender {");
     
-    UIActionSheet *uiasNormalActionSheet = [[UIActionSheet alloc] initWithTitle:@"大標題"
+    UIActionSheet *uiasGeneralUseActionSheet = [[UIActionSheet alloc] initWithTitle:@"Title for General Use"
                                                                        delegate:self
-                                                              cancelButtonTitle:@"填入取消，也可以是nil整列不顯示，但就無法關掉了"
-                                                         destructiveButtonTitle:@"這是紅字的刪除，也可以是nil整列不顯示"
-                                                              otherButtonTitles:@"Copy", @"Move", @"Duplicate", nil];
-    
+                                                              cancelButtonTitle:@"Put \"Cancel\" or nil for nothing"
+                                                         destructiveButtonTitle:@"A red Line for \"deleting\"; nil for nothing"
+                                                              otherButtonTitles:@"Other 1", @"Other 2", @"Other 3", nil];
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
         // In this case the device is an iPad.
-        [uiasNormalActionSheet showFromRect:[(UIButton *)sender frame] inView:self.view animated:YES];
+        [uiasGeneralUseActionSheet showFromRect:[(UIButton *)sender frame] inView:self.view animated:YES];
     }
     else{
         // In this case the device is an iPhone/iPod Touch.
-        [uiasNormalActionSheet showInView:self.view];
+        [uiasGeneralUseActionSheet showInView:self.view];
     }
+    uiasGeneralUseActionSheet.tag = 100;
+}
+
+- (void)uibDeleteConfirmationActionSheet:(id) sender {
+    NSLog(@"- (void)uibDeleteConfirmationActionSheet:(id) sender {");
     
-    uiasNormalActionSheet.tag = 100;
+    NSString *cancelTitle = (UI_USER_INTERFACE_IDIOM() != UIUserInterfaceIdiomPad) ? @"Put \"Cancel\" or nil for nothing" : nil;
+    UIActionSheet *uiasDeleteConfirmationActionSheet = [[UIActionSheet alloc] initWithTitle:@"Title for Delete confirm"
+                                                                                   delegate:self
+                                                                          cancelButtonTitle:cancelTitle
+                                                                     destructiveButtonTitle:@"A red Line for \"deleting\"; nil for nothing"
+                                                                          otherButtonTitles:nil];
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+        // In this case the device is an iPad.
+        [uiasDeleteConfirmationActionSheet showFromRect:[(UIButton *)sender frame] inView:self.view animated:YES];
+    }
+    else{
+        // In this case the device is an iPhone/iPod Touch.
+        [uiasDeleteConfirmationActionSheet showInView:self.view];
+    }
+    uiasDeleteConfirmationActionSheet.tag = 200;
 }
 
 #pragma mark - UIActionSheet method implementation
@@ -73,42 +91,26 @@
     NSLog(@"-(void)actionSheet:(UIActionSheet *)actionSheet willDismissWithButtonIndex:(NSInteger)buttonIndex{");
 }
 
-
-- (void)uibDeleteConfirmationActionSheet:(id) sender {
-    NSLog(@"- (void)uibDeleteConfirmationActionSheet:(id) sender {");
-}
-
-- (void)uibColorsActionSheet:(id) sender {
-    NSLog(@"- (void)uibColorsActionSheet:(id) sender {");
-}
-
-- (void)addButton
+- (void)addButtonWithActionSheet
 {
-    UIButton *uibNormalActionSheet = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    [uibNormalActionSheet addTarget:self action:@selector(buttonNormalActionSheetClicked:) forControlEvents:UIControlEventTouchUpInside];
-    [uibNormalActionSheet setFrame:CGRectMake(0.0, cgfScreenHeight * 0.2, cgfScreenWidth, cgfScreenHeight * 0.1)];
-    [uibNormalActionSheet setTitle:@"Normal Action Sheet" forState:UIControlStateNormal];
-    [self.view addSubview:uibNormalActionSheet];
+    UIButton *uibGeneralUseActionSheet = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    [uibGeneralUseActionSheet addTarget:self action:@selector(buttonGeneralUseActionSheetClicked:) forControlEvents:UIControlEventTouchUpInside];
+    [uibGeneralUseActionSheet setFrame:CGRectMake(0.0, cgfScreenHeight * 0.2, cgfScreenWidth, cgfScreenHeight * 0.1)];
+    [uibGeneralUseActionSheet setTitle:@"Normal Action Sheet" forState:UIControlStateNormal];
+    [self.view addSubview:uibGeneralUseActionSheet];
 
     UIButton *uibDeleteConfirmationActionSheet = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     [uibDeleteConfirmationActionSheet addTarget:self action:@selector(uibDeleteConfirmationActionSheet:) forControlEvents:UIControlEventTouchUpInside];
     [uibDeleteConfirmationActionSheet setFrame:CGRectMake(0.0, cgfScreenHeight * 0.3, cgfScreenWidth, cgfScreenHeight * 0.1)];
     [uibDeleteConfirmationActionSheet setTitle:@"Delete Confirmation Action Sheet" forState:UIControlStateNormal];
     [self.view addSubview:uibDeleteConfirmationActionSheet];
-
-    UIButton *uibColorActionSheet = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    [uibColorActionSheet addTarget:self action:@selector(uibColorsActionSheet:) forControlEvents:UIControlEventTouchUpInside];
-    [uibColorActionSheet setFrame:CGRectMake(0.0, cgfScreenHeight * 0.4, cgfScreenWidth, cgfScreenHeight * 0.1)];
-    [uibColorActionSheet setTitle:@"Colors Action Sheet" forState:UIControlStateNormal];
-    [self.view addSubview:uibColorActionSheet];
-
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setMyScreenSize];
     // Do any additional setup after loading the view.
-    [self addButton];
+    [self addButtonWithActionSheet];
 }
 
 - (void)didReceiveMemoryWarning {
